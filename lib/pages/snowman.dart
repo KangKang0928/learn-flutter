@@ -2,36 +2,19 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class SnowManPage extends StatefulWidget {
+  const SnowManPage({Key? key, required this.title}) : super(key: key);
   final String title;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<SnowManPage> createState() => _SnowManPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
+class _SnowManPageState extends State<SnowManPage>
     with SingleTickerProviderStateMixin {
   // 动画控制器
   late AnimationController _controller;
-  List<SnowFlake> _snowflakes = List.generate(10000, (index) => SnowFlake());
+  final List<SnowFlake> _snowflakes =
+      List.generate(10000, (index) => SnowFlake());
   @override
   void initState() {
     // 每秒执行
@@ -59,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage>
                 // constraints: BoxConstraints.expand(),
                 width: double.infinity,
                 height: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         colors: [Colors.blue, Colors.lightBlue, Colors.white],
                         begin: Alignment.topCenter,
@@ -86,10 +69,10 @@ class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final whitePaint = Paint()..color = Colors.white;
-    canvas.drawCircle(size.center(Offset(0, 80)), 60, whitePaint);
+    canvas.drawCircle(size.center(const Offset(0, 80)), 60, whitePaint);
     canvas.drawOval(
         Rect.fromCenter(
-            center: size.center(Offset(0, 250)), width: 200, height: 250),
+            center: size.center(const Offset(0, 250)), width: 200, height: 250),
         whitePaint);
     _snowflakes.forEach((snowflake) {
       // 绘制雪花

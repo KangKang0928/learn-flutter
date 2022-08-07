@@ -1,5 +1,6 @@
 import 'dart:math';
 import './pages/snowman.dart';
+import './pages/ball.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,7 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
         "雪人",
         const SnowManPage(
           title: '雪人',
-        ))
+        )),
+    Card("3d球球", const BallPage()),
   ];
   @override
   void initState() {

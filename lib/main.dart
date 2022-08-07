@@ -1,7 +1,8 @@
 import 'dart:math';
 import './pages/snowman.dart';
 import './pages/ball.dart';
-import './pages//hero动画/first.dart';
+import './pages/hero动画/first.dart';
+import './pages/MusicStore/index.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -38,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         )),
     Card("3d球球", const BallPage()),
     Card("Hero动画", const FirtsPage()),
+    Card("B&O", const MusicStorePage()),
   ];
   @override
   void initState() {

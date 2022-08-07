@@ -74,10 +74,10 @@ class MyPainter extends CustomPainter {
 
         canvas.drawCircle(
             Offset(rzx, rzy),
-            1,
+            1.5,
             Paint()
               ..color = Color.fromARGB(
-                  255, j * 255 ~/ resolution, i * 255 ~/ resolution, 255));
+                  255, i * 255 ~/ resolution, j * 255 ~/ resolution, 255));
       }
     }
   }

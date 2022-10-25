@@ -6,6 +6,8 @@ import './pages/MusicStore/index.dart';
 import './pages/list_view.dart';
 import './pages/dynamic_list_view.dart';
 import './pages/builder_list_view.dart';
+import './pages/grid_view.dart';
+import './pages/builder_grid_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -46,6 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Card("ListView列表",const ListViewPage()),
     Card("动态ListView",const DynamicListViewPage()),
     Card("动态BuilderListView",const BuilderListView()),
+    Card("动态GridView",const GridViewPage()),
+    Card("使用builder的GridView",const BuilderGridViewPage())
   ];
   @override
   void initState() {
@@ -64,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: ListView.builder(
+            physics:const BouncingScrollPhysics(),
             itemCount: menus.length,
             itemBuilder: (BuildContext context, int index) {
               return TextButton(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../res/listData.dart';
+
 
 class BuilderListView extends StatefulWidget {
   const BuilderListView({Key? key}) : super(key: key);
@@ -23,10 +25,12 @@ class _BuilderListViewState extends State<BuilderListView> {
         title:const Text("使用ListViewBuilder来创建列表"),
       ),
       body: ListView.builder(
-        itemCount: list.length,
+        itemCount: listData.length,
         itemBuilder: (context,index){
           return ListTile(
-            title: Text(list[index])
+            leading: Image.network(listData[index]['imageUrl']),
+            title: Text(listData[index]["title"]),
+            subtitle: Text(listData[index]["author"]),
           );
         }
       ));

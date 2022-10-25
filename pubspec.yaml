@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ^0.17.0
 
+  # 新拟态插件
+  flutter_neumorphic: ^3.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

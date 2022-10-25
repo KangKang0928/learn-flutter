@@ -10,7 +10,7 @@ class BuilderGridViewPage extends StatefulWidget {
 }
 
 class _BuilderGridViewPageState extends State<BuilderGridViewPage> {
-  //动态生成gridview
+  //动态生成gridview的函数
   Widget _initGridViewData(context, index) {
     return Container(
       alignment: Alignment.center,
@@ -73,3 +73,5 @@ class _BuilderGridViewPageState extends State<BuilderGridViewPage> {
             itemBuilder: _initGridViewData));
   }
 }
+
+//注意！组件一定是个类哦

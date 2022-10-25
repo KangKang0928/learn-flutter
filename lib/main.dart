@@ -8,6 +8,9 @@ import './pages/dynamic_list_view.dart';
 import './pages/builder_list_view.dart';
 import './pages/grid_view.dart';
 import './pages/builder_grid_view.dart';
+import './pages/layout_box.dart';
+import './pages/stack.dart';
+import './pages/stack_position.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Flutter'),
     );
   }
 }
@@ -49,7 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Card("动态ListView",const DynamicListViewPage()),
     Card("动态BuilderListView",const BuilderListView()),
     Card("动态GridView",const GridViewPage()),
-    Card("使用builder的GridView",const BuilderGridViewPage())
+    Card("使用builder的GridView",const BuilderGridViewPage()),
+    Card("各种布局实验",const LayoutBoxPage()),
+    Card("Stack布局",const StackPage()),
+    Card("Stack+Position实现绝对定位布局",const StackPositionPage())
   ];
   @override
   void initState() {

@@ -149,6 +149,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         //1 Navigator.of(context).push(MaterialPageRoute)
                         //2 
+
+                        //返回上一页：Navigator.pop();
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return menus[index].widget;

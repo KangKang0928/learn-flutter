@@ -1,4 +1,3 @@
-import 'dart:math';
 import './pages/snowman.dart';
 import './pages/ball.dart';
 import './pages/hero动画/first.dart';
@@ -11,6 +10,12 @@ import './pages/builder_grid_view.dart';
 import './pages/layout_box.dart';
 import './pages/stack.dart';
 import './pages/stack_position.dart';
+import './pages/aspect_ratio.dart';
+import './pages/card_page.dart';
+import './pages/warp_page.dart';
+import './pages/tabbar_page.dart';
+import './pages/floating_tabbar_page.dart';
+import './pages/drawer_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -55,7 +60,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Card("使用builder的GridView",const BuilderGridViewPage()),
     Card("各种布局实验",const LayoutBoxPage()),
     Card("Stack布局",const StackPage()),
-    Card("Stack+Position实现绝对定位布局",const StackPositionPage())
+    Card("Stack+Position实现绝对定位布局",const StackPositionPage()),
+    Card("AspectRadio实现固定宽高比",const AspectRatioPage()),
+    Card("卡片",const CardPage()),
+    Card("Warp布局",const WarpPage()),
+    Card("TabBar",const TabbarPage()),
+    Card("中间凸起的tabbar",const FloatingTabbarPage()),
+    Card("侧边栏drawer",const DrawerPage())
   ];
   @override
   void initState() {

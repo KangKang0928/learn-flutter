@@ -47,7 +47,44 @@ class _DrawerPageState extends State<DrawerPage> {
         ),
       ),
       endDrawer: Drawer(
-        child: const Text("有侧边栏"),
+        elevation: 0.0,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                  //自带模板的DrawerHeader
+                  child: UserAccountsDrawerHeader(
+                    onDetailsPressed: () {
+                      // ignore: avoid_print
+                      print("1222");
+                    },
+                    currentAccountPicture: const CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://c-ssl.dtstatic.com/uploads/blog/202105/04/20210504062111_d8dc3.thumb.1000_0.jpg"),
+                    ),
+                    otherAccountsPictures: const [],
+                    decoration: const BoxDecoration(
+                        color: Colors.red,
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "http://pic1.win4000.com/wallpaper/2019-05-06/5ccfc4b1d4627.jpg"))),
+                    accountEmail: const Text("wanwan@123.com"),
+                    accountName: const Text("wanwan"),
+                  ),
+                )
+              ],
+            ),
+            const ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.my_library_add),
+              ),
+              title: Text("个人中心"),
+            )
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [

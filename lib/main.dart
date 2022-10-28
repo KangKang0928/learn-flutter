@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
-
+import 'package:flutter/cupertino.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import './pages/snowman.dart';
 import './pages/ball.dart';
 import './pages/hero动画/first.dart';
@@ -19,7 +20,14 @@ import './pages/tabbar_page.dart';
 import './pages/floating_tabbar_page.dart';
 import './pages/drawer_page.dart';
 import './pages/tabbar_view_page.dart';
+import './pages/swiper_page.dart';
+import './pages/animated_list_page.dart';
+import './pages/animated_page.dart';
+import './pages/z_paging_page.dart';
+import './pages/getx_page.dart';
+import 'pages/dialog_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,7 +58,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
       theme: ThemeData(
@@ -59,6 +67,14 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: _MyAppState.theme[2],
       ),
       home: const MyHomePage(title: 'Flutter'),
+      //初始路由
+      initialRoute: "/home",
+      //一般来说，main配置路由，使用initialRoute设定刚进来的主页，如登录页面
+      routes: {
+        "/home":(context)=>const TabbarPage(),
+        "/snow": (context) => const SnowManPage(title: '命名路由-雪人'),
+        "/ball": (context) => const BallPage()
+      },
     );
   }
 }
@@ -95,7 +111,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Card("TabBar", const TabbarPage()),
     Card("中间凸起的tabbar", const FloatingTabbarPage()),
     Card("侧边栏drawer", const DrawerPage()),
-    Card("顶部滑动导航", const TabbarViewPage())
+    Card("顶部滑动导航", const TabbarViewPage()),
+    Card("弹窗",const DialogPage()),
+    Card("轮播图组件",const SwiperPage()),
+    Card("带动画的列表",const AnimatedListPage()),
+    Card("Flutter动画",const AnimatedPage()),
+    Card("z-paging",const ZPagingPage()),
+    Card("GetX示例",const GetxPage())
   ];
 
   @override
@@ -120,6 +142,52 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           elevation: 0.0,
           title: Text(widget.title),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.route),
+              onPressed: () {
+                Navigator.pushNamed(context, '/snow');
+              },
+            ),
+            IconButton(
+                onPressed: () {
+                  showDialog(
+                    //通过showDialog方法展示alert弹框
+                    context: context,
+                    builder: (context) {
+                      return CupertinoAlertDialog(
+                        title: const Text('提示'), //弹框标题
+                        content: const Text('是否想放弃学习Flutter'), //弹框内容
+                        actions: <Widget>[
+                          //操作控件
+                          CupertinoDialogAction(
+                            onPressed: () {
+                              //控件点击监听
+                              print("我不会放弃的");
+                              Navigator.pop(context);
+                            },
+                            // ignore: prefer_const_constructors
+                            textStyle: TextStyle(
+                                fontSize: 18,
+                                color: Colors.blueAccent), //按钮上的文本风格
+                            child: const Text('取消'), //控件显示内容
+                          ),
+                          CupertinoDialogAction(
+                            onPressed: () {
+                              print("我投降");
+                              Navigator.pop(context);
+                            },
+                            textStyle: const TextStyle(
+                                fontSize: 18, color: Colors.grey),
+                            child: const Text('确定'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                icon: const Icon(Icons.window))
+          ],
           leading: IconButton(
             icon: Icon(_MyAppState.currentThemeIndex % 2 == 0
                 ? Icons.sunny
@@ -147,12 +215,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () => {
                         //两种跳转方式
 
-                        //1 Navigator.of(context).push(MaterialPageRoute)
-                        //2 
+                        //1 Navigator.of(context).push(MaterialPageRoute) 普通路由，直接push一个dart页面
+                        //2 Navigator.pushNamed(name) 命名路由--常用于统一管理
 
-                        //返回上一页：Navigator.pop();
+                        //替换路由
+                        // Navigator.of(context).pushReplacementNamed();
+
+                        //返回到指定根路由
+                        // Navigator.of(context).pushAndRemoveUntil();
+
+                        //返回上一页：Navigator.of(context).pop();
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
+                            CupertinoPageRoute(builder: (context) {
                           return menus[index].widget;
                         }))
                       },

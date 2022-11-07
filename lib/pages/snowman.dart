@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SnowManPage extends StatefulWidget {
   const SnowManPage({Key? key, required this.title}) : super(key: key);
@@ -22,6 +23,8 @@ class _SnowManPageState extends State<SnowManPage>
         AnimationController(duration: const Duration(seconds: 1), vsync: this)
           ..repeat();
     super.initState();
+    print("参数");
+    print(Get.arguments);
   }
 
   @override

@@ -55,18 +55,18 @@ class _GetxPageState extends State<GetxPage> {
                       child: Column(
                         children: [
                           ListTile(
-                            leading: Icon(Icons.wb_sunny_outlined),
-                            title: Text("白天模式",style: TextStyle(color:Colors.black87),),
+                            leading: Icon(Icons.wb_sunny_outlined,color:Get.isDarkMode?Colors.white:Colors.black87),
+                            title: Text("白天模式",style: TextStyle(color:Get.isDarkMode?Colors.white:Colors.black87),),
                             onTap: (){
-                              Get.changeTheme(ThemeData.dark());
+                              Get.changeTheme(ThemeData.light());
                               Get.back();
                             },
                           ),
                           ListTile(
-                            leading: Icon(Icons.wb_sunny),
-                            title: Text("夜间模式",style: TextStyle(color: Colors.black87),),
+                            leading: Icon(Icons.wb_sunny,color: Get.isDarkMode?Colors.white:Colors.black87,),
+                            title: Text("夜间模式",style: TextStyle(color: Get.isDarkMode?Colors.white:Colors.black87),),
                             onTap: (){
-                              Get.changeTheme(ThemeData.light());
+                              Get.changeTheme(ThemeData.dark());
                               Get.back();
                             },
                           )

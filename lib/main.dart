@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 import './pages/snowman.dart';
 import './pages/ball.dart';
 import './pages/hero动画/first.dart';
@@ -27,6 +26,10 @@ import './pages/z_paging_page.dart';
 import './pages/getx_page.dart';
 import 'pages/dialog_page.dart';
 import 'package:flutter/material.dart';
+import './middleware/shop_middleware.dart';
+import './pages/custom_animate_bar_page.dart';
+import './pages/render_object_page.dart';
+import 'pages/custom_multi_child_layout_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -71,10 +74,20 @@ class _MyAppState extends State<MyApp> {
       initialRoute: "/home",
       //一般来说，main配置路由，使用initialRoute设定刚进来的主页，如登录页面
       routes: {
-        "/home":(context)=>const TabbarPage(),
+        "/home": (context) => const TabbarPage(),
         "/snow": (context) => const SnowManPage(title: '命名路由-雪人'),
         "/ball": (context) => const BallPage()
       },
+      defaultTransition: Transition.rightToLeft,
+      getPages: [
+        GetPage(name: "/home", page: () => const TabbarPage()),
+        GetPage(
+            name: "/snow",
+            page: () => const SnowManPage(title: 'GetX路由-雪人'),
+            middlewares: [ShopMiddleWare()],
+            transition: Transition.fadeIn),
+        GetPage(name: "/ball", page: () => const BallPage()),
+      ],
     );
   }
 }
@@ -112,12 +125,15 @@ class _MyHomePageState extends State<MyHomePage> {
     Card("中间凸起的tabbar", const FloatingTabbarPage()),
     Card("侧边栏drawer", const DrawerPage()),
     Card("顶部滑动导航", const TabbarViewPage()),
-    Card("弹窗",const DialogPage()),
-    Card("轮播图组件",const SwiperPage()),
-    Card("带动画的列表",const AnimatedListPage()),
-    Card("Flutter动画",const AnimatedPage()),
-    Card("z-paging",const ZPagingPage()),
-    Card("GetX示例",const GetxPage())
+    Card("弹窗", const DialogPage()),
+    Card("轮播图组件", const SwiperPage()),
+    Card("带动画的列表", const AnimatedListPage()),
+    Card("Flutter动画", const AnimatedPage()),
+    Card("z-paging", const ZPagingPage()),
+    Card("GetX示例", const GetxPage()),
+    Card("自定义的底部导航栏",const CustomAnimateBarPage()),
+    Card("CustomMultiChildLayout",const CustomMultiChildLayoutPage()),
+    Card("RenderObject",const RenderObjectPage())
   ];
 
   @override
@@ -230,6 +246,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           return menus[index].widget;
                         }))
                       },
+                  onLongPress: () {
+                    //长按使用GetX跳转
+                    Get.toNamed("/snow",arguments: {
+                      "data":123
+                    });
+                  },
                   child: Text(menus[index].cardName));
             }));
   }

@@ -30,6 +30,7 @@ import './middleware/shop_middleware.dart';
 import './pages/custom_animate_bar_page.dart';
 import './pages/render_object_page.dart';
 import './pages/sliver_page.dart';
+import './pages/food/restaurant_page.dart';
 import 'pages/custom_multi_child_layout_page.dart';
 import 'package:get/get.dart';
 
@@ -135,7 +136,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Card("自定义的底部导航栏",const CustomAnimateBarPage()),
     Card("CustomMultiChildLayout",const CustomMultiChildLayoutPage()),
     Card("RenderObject",const RenderObjectPage()),
-    Card("自定义滚动列表+Sliver",const SliverPage())
+    Card("自定义滚动列表+Sliver",const SliverPage()),
+    Card("餐厅",const RestaurantPage())
   ];
 
   @override

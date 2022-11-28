@@ -8,8 +8,9 @@ class RestaurantInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 170,
+      decoration: const BoxDecoration(color: Colors.white),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

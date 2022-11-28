@@ -12,6 +12,9 @@ class _RestaurantAppBarState extends State<RestaurantAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      pinned: true,
+      backgroundColor: Colors.green[300],
+      elevation: 0,
       expandedHeight: 200,
       flexibleSpace: FlexibleSpaceBar(
         background: Image.asset(
